@@ -4,8 +4,7 @@ import Search from './Search'
 
 class Profile extends Component {
     state = {
-        trackData: [],
-        searchActive: false
+        trackData: []
     }
 
     getTrackAnalysis = async (track) => {
@@ -22,8 +21,7 @@ class Profile extends Component {
                 console.log("TRACK DATAAAAAAAAAAA\n", trackData)
                 const trackDataJson = await trackData.json()
                 this.setState({
-                	trackData: trackDataJson,
-                	searchActive: true
+                	trackData: trackDataJson
                 })
                 console.log("HEEEEEEEEEEEEEEYYYYYYY\n")
                 return trackDataJson
@@ -42,7 +40,7 @@ class Profile extends Component {
         return (
             <div>
 				<p>Logged in as {this.props.userInfo.display_name}</p>
-				<Search getTrackAnalysis={this.getTrackAnalysis}/>
+				<Search getTrackAnalysis={this.getTrackAnalysis} trackData={this.state.trackData}/>
 			</div>
         )
     }

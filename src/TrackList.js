@@ -1,14 +1,19 @@
 import React, { Component } from 'react'
-import './App/css'
+import { Link } from 'react-router-dom'
+import './App.css'
 
 class TrackList extends Component {
+	state = {
+		analysis: []
+	}
+	handleSumbit = (event) => {
 
+	}
 	render() {
+		console.log(this.props.trackData)
         const listTracks = this.props.trackData.map((item, index) =>
         	<li key={index}>
-        	<h2>{dog.name}: A cute {dog.age}-year-old {dog.breed}</h2>
-        	<button value={index} onClick={this.handleDelete}>remove dog</button>
-        	<input type="button" value="Update" onClick={this.props.updateDog.bind(null, index, dog)} />
+        	<button onSubmit={this.handleSumbit}><Link to={`/analysis/${item.track}/${item.id}`}>{item.track} ----- by {item.artist.name}</Link></button>
         	</li>
         )
         return (
