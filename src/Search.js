@@ -15,12 +15,10 @@ class Search extends Component {
 
 	handleSubmit = (event) => {
 		event.preventDefault()
-		console.log("WOOOOOOOOOHOOOOOOOOO\n", this.state.track)
 		this.props.getTrackAnalysis(this.state.track)
 	}
 
 	render() {
-		console.log("IF THERE IS TRACK DATA ON THE TRACKLIST IT IS:", this.props.trackData)
 		return(
 			<div>
 				<p>Search a song to see its visualization</p>

@@ -48,10 +48,6 @@ div {
 
 canvas {
   background: #56789a;
-  height: 60vh;
-  width: 90vw;
-  margin: 0 auto;
-  padding: 10px 5vw 10px 5vw;
 }
 
 @keyframes App-logo-spin {
