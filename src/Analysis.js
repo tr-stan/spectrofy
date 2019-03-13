@@ -5,7 +5,10 @@ class Analysis extends Component {
 
 	render() {
 		return(
-			<button>Visualize {this.props.match.params.trackName}</button>
+			<div>
+			<h2>Visualization for {this.props.match.params.trackName}</h2>
+			<canvas></canvas>
+			</div>
 		)
 	}
 }
