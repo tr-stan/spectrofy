@@ -7,7 +7,7 @@ class Profile extends Component {
         trackData: []
     }
 
-    getTrackAnalysis = async (track) => {
+    getTrackData = async (track) => {
         try {
             const trackData = await fetch('http://localhost:8888/search', {
                 method: 'POST',
@@ -18,12 +18,10 @@ class Profile extends Component {
                 }
             })
             if (trackData.status !== 401) {
-                console.log("TRACK DATAAAAAAAAAAA\n", trackData)
                 const trackDataJson = await trackData.json()
                 this.setState({
                 	trackData: trackDataJson
                 })
-                console.log("HEEEEEEEEEEEEEEYYYYYYY\n")
                 return trackDataJson
             } else {
                 this.setState({
@@ -40,7 +38,7 @@ class Profile extends Component {
         return (
             <div>
 				<p>Logged in as {this.props.userInfo.display_name}</p>
-				<Search getTrackAnalysis={this.getTrackAnalysis} trackData={this.state.trackData}/>
+				<Search getTrackData={this.getTrackData} trackData={this.state.trackData}/>
 			</div>
         )
     }

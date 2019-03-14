@@ -28,7 +28,7 @@ class Home extends Component {
 	}
 
 	componentDidMount() {
-        this.getUserInfo().then(data => console.log(data, ' UserInfo Data from API'))
+        this.getUserInfo().then(data => console.log('UserInfo Data from API:', data))
     }
 	// authenticate = async () => {
 	// 	fetch(`http://localhost:8888/auth/spotify`)
