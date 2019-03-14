@@ -37,7 +37,7 @@ class Home extends Component {
     render() {
         return (
             <div className="App">
-            	<h1>Audio-Vision</h1>
+            	<h1>spectrofy</h1>
             	{this.state.userInfo !== null ? <Profile userInfo={this.state.userInfo} /> : <Login userInfo={this.state.userInfo} />}
         	</div>
         )

@@ -1,8 +1,7 @@
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Link
+    Route
 } from 'react-router-dom';
 import React, { Component } from 'react';
 import './App.css';
@@ -14,13 +13,10 @@ class App extends Component {
     return (
       <Router>
         <div>
-                <nav className='nav'>
-                  <Link to="/">Audio-Vision</Link>{" "}
-                </nav>
-                <Switch>
-                <Route exact path="/" component={Home} />
-                <Route path="/analysis/:trackName/:trackId" component={Analysis} />
-                </Switch>
+          <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/analysis/:trackName/:trackId" component={Analysis} />
+          </Switch>
         </div>
       </Router>
     );

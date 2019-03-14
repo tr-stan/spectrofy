@@ -6,9 +6,10 @@ class TrackList extends Component {
 	state = {
 		analysis: [],
         complete: false,
-        id: ''
+        id: '',
+        track: ''
 	}
-	getAudioAnalysis = async (index, id) => {
+	getAudioAnalysis = async (index, id, track) => {
 		try {
 			const analysis = await fetch('http://localhost:8888/analyze', {
 				method: 'POST',
@@ -24,7 +25,8 @@ class TrackList extends Component {
                 this.setState({
                 	analysis: analysisJson,
                     complete : true,
-                    id: id
+                    id: id,
+                    track: track
                 })
                 console.log("HEEEEEEEEEEEEEEYYYYYYY\n")
                 return analysisJson
@@ -44,11 +46,11 @@ class TrackList extends Component {
         const listTracks = this.props.trackData.map((item, index) => {
         	return(
         	<li key={index}>
-        	<button onClick={this.getAudioAnalysis.bind(null, index, item.id)}>{item.track} ----- by {item.artist.name}</button>
+        	<button onClick={this.getAudioAnalysis.bind(null, index, item.id, item.track)}>{item.track} ----- by {item.artist.name}</button>
         	</li>
         )})
         return (
-        	(!!this.state.complete) ? <Analysis analysis={this.state.analysis} /> :  <ul>{listTracks}</ul>
+        	(!!this.state.complete) ? <Analysis analysis={this.state.analysis} track={this.state.track} /> :  <ul>{listTracks}</ul>
             )
 
     }

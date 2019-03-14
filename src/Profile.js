@@ -37,8 +37,8 @@ class Profile extends Component {
     render() {
         return (
             <div>
-				<p>Logged in as {this.props.userInfo.display_name}</p>
 				<Search getTrackData={this.getTrackData} trackData={this.state.trackData}/>
+				<p id="logged">Logged in as {this.props.userInfo.display_name}</p>
 			</div>
         )
     }
