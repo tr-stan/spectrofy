@@ -8,12 +8,15 @@ class Analysis extends Component {
         this.canvas = React.createRef()
         this.drawVisuals = this.drawVisuals.bind(this)
     }
-
+    // create method for drawing visuals/animations on canvas
+    // from the track audio analysis
     drawVisuals() {
         let cWidth = this.canvas.current.width
         let cHeight = this.canvas.current.height
         let c = this.canvas.current.getContext('2d')
-
+        
+        // create Circle class for instantiating circles based off
+        // the track audio analysis's segments data
         class Circle {
             constructor(x, y, dx, dy, radius) {
                 this.x = x;
@@ -23,22 +26,28 @@ class Analysis extends Component {
                 this.radius = radius;
             }
 
+            // method for drawing each instantiated circle
             draw() {
                 c.beginPath()
                 c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
                 c.strokeStyle = 'blue'
                 c.stroke()
+                c.fill()
             }
 
+            // method for how the animated circle will update/move
             update() {
+            	// prevent circle from getting stuck on/going past sides of page
                 if (this.x + this.radius > cWidth || this.x - this.radius < 0) {
                     this.dx = -this.dx;
                 }
 
+                // prevent circle from getting stuck on/going past top/bottom of page
                 if (this.y + this.radius > cHeight || this.y - this.radius < 0) {
                     this.dy = -this.dy
                 }
 
+                // move circle at its set velocity
                 this.x += this.dx
                 this.y += this.dy
 
@@ -48,15 +57,43 @@ class Analysis extends Component {
 
         let circleArray = []
 
-        for (let i = 0; i < 10; i++) {
-            let radius = 3
-            let x = Math.random() * (cWidth - radius * 2) + radius
-            let y = Math.random() * (cHeight - radius * 2) + radius
-            let dx = (Math.random() - 0.5) * 3
+        // get random number between two values
+        function getRandomArbitrary(min, max) {
+        	return Math.floor(Math.random() * (max - min) + min);
+        }
+
+        // map through fetched audio analysis' segments
+        circleArray = this.props.analysis.map(segment => {
+        	let radius = Math.round((-segment.loudness_max * segment.confidence) / 2)
+
+        	let randomTimbre = Math.floor(Math.random() * 11)
+
+        	let randomX = Math.abs(segment.timbre[randomTimbre] * 2)
+        	let x = getRandomArbitrary(randomX, cWidth)
+
+        	let randomY = Math.abs(segment.timbre[randomTimbre] * 2)
+        	let y = getRandomArbitrary(randomY, cHeight)
+
+        	let dx = (Math.random() - 0.5) * 3
             let dy = (Math.random() - 0.5) * 3
 
-            circleArray.push(new Circle(x, y, dx, dy, radius))
+        	return (new Circle(x, y, dx, dy, radius))
+        })
+        for (let i = 0; i < circleArray.length; i++) {
+        	console.log(`Circle No. ${i + 1} X variable:`, circleArray[i].x)
         }
+        console.log("circle Array:", circleArray)
+
+        // for (let i = 0; i < 10; i++) {
+        //     let radius = 3
+        //     let x = Math.random() * (cWidth - radius * 2) + radius
+        //     let y = Math.random() * (cHeight - radius * 2) + radius
+        //     let dx = (Math.random() - 0.5) * 3
+        //     let dy = (Math.random() - 0.5) * 3
+
+        //     circleArray.push(new Circle(x, y, dx, dy, radius))
+        //     console.log("DOOOOOOOOONNNNNNNEEEEEEEEEEE")
+        // }
 
 
         function animate() {

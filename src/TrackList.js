@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import './App.css'
 import Analysis from "./Analysis"
 
 class TrackList extends Component {
 	state = {
 		analysis: [],
-        complete : false,
+        complete: false,
         id: ''
 	}
 	getAudioAnalysis = async (index, id) => {
@@ -40,19 +39,16 @@ class TrackList extends Component {
             return error
         }
 	}
-	render() {
-		
 
-		console.log(this.props.trackData)
+	render() {
         const listTracks = this.props.trackData.map((item, index) => {
-        	
         	return(
         	<li key={index}>
         	<button onClick={this.getAudioAnalysis.bind(null, index, item.id)}>{item.track} ----- by {item.artist.name}</button>
         	</li>
         )})
         return (
-        	(!!this.state.complete && !!this.state.analysis) ? <Analysis analysis={this.state.analysis} /> :  <ul>{listTracks}</ul>
+        	(!!this.state.complete) ? <Analysis analysis={this.state.analysis} /> :  <ul>{listTracks}</ul>
             )
 
     }
