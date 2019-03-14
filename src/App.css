@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Libre+Barcode+128+Text|Open+Sans');
+
 .App {
   text-align: center;
 }
@@ -12,6 +14,22 @@
   margin: 10px auto;
   justify-content: center;
   text-align: center;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+}
+
+h1 {
+  font-family: 'Libre Barcode 128 Text', sans-serif;
+  font-size: 5em;
+  margin-bottom: 5px;
+}
+
+#logged {
+  margin: 0 auto;
+  font-size: 10px;
 }
 
 ul {
@@ -32,7 +50,7 @@ a {
   font-weight: bold;
   font-size: 1em;
 }
-a:hover{
+a:hover {
   cursor: pointer;
 }
 
@@ -42,6 +60,17 @@ button {
   background: #eee;
   border: none;
 }
+
+button:hover {
+  cursor: pointer;
+}
+
+input {
+  height: 1em;
+  padding: 5px;
+  margin: 5px;
+}
+
 div {
   justify-content: center;
 }

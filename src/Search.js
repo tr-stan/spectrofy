@@ -28,7 +28,7 @@ class Search extends Component {
 				<p>Search a song to see its visualization</p>
 				<form onSubmit={this.handleSubmit}>
 					<input type="text" placeholder="Track Name" name="track" value={this.state.value} onChange={this.handleChange}/>
-					<button type="submit">Sumbit</button>
+					<button type="submit">Submit</button>
 				</form>
 				<TrackList trackData={this.props.trackData} complete={this.state.complete} />
 			</div>
