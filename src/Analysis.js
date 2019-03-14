@@ -6,10 +6,10 @@ class Analysis extends Component {
         super(props)
         // create a ref to store the canvas DOM element
         this.canvas = React.createRef()
-        this.draw = this.draw.bind(this)
+        this.drawVisuals = this.drawVisuals.bind(this)
     }
 
-    draw() {
+    drawVisuals() {
         let cWidth = this.canvas.current.width
         let cHeight = this.canvas.current.height
         let c = this.canvas.current.getContext('2d')
@@ -72,14 +72,14 @@ class Analysis extends Component {
     }
 
     componentDidMount() {
-        this.draw()
+        this.drawVisuals()
     }
 
     render() {
         return (
             <div>
-				<h2>Visualization for {this.props.match.params.trackName}</h2>
-				<canvas height={500} width={500} ref={this.canvas}></canvas>
+				<h2>Visualization for {this.props.id}</h2>
+				<canvas width={window.innerWidth} height={window.innerHeight} ref={this.canvas}></canvas>
 			</div>
         )
     }

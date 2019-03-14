@@ -15,7 +15,7 @@ class Search extends Component {
 
 	handleSubmit = (event) => {
 		event.preventDefault()
-		this.props.getTrackAnalysis(this.state.track)
+		this.props.getTrackData(this.state.track)
 	}
 
 	render() {
