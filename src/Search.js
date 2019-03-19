@@ -25,7 +25,8 @@ class Search extends Component {
 	render() {
 		return(
 			<div>
-				<p>Search a song to see its visualization</p>
+				<p>Spectrofy visualizes track data from Spotify's Web API via its audio analysis object.</p>
+				<p>Search for a song to see it visualized.</p>
 				<form onSubmit={this.handleSubmit}>
 					<input type="text" placeholder="Track Name" name="track" value={this.state.value} onChange={this.handleChange}/>
 					<button type="submit">Submit</button>
