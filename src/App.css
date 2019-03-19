@@ -1,21 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Libre+Barcode+128+Text|Open+Sans');
 
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.nav {
-  margin: 10px auto;
-  justify-content: center;
-  text-align: center;
-}
-
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 20px;
@@ -24,12 +8,13 @@ body {
 h1 {
   font-family: 'Libre Barcode 128 Text', sans-serif;
   font-size: 5em;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
-#logged {
+p {
+  max-width: 360px;
   margin: 0 auto;
-  font-size: 10px;
+  padding: 20px;
 }
 
 ul {
@@ -79,6 +64,27 @@ canvas {
   background: #56789a;
   width: 100%;
   height: 100%;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.nav {
+  margin: 10px auto;
+  justify-content: center;
+  text-align: center;
+}
+
+#logged {
+  margin: 0 auto;
+  font-size: 10px;
 }
 
 @keyframes App-logo-spin {
