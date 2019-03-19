@@ -82,7 +82,7 @@ class Analysis extends Component {
         	let dx = (Math.random() - 0.5) * 3
             let dy = (Math.random() - 0.5) * 3
 
-            let rgba = `rgba(${Math.floor((segment.pitches[0] + segment.pitches[1] + segment.pitches[2]) * 85)},${Math.floor((segment.pitches[3] + segment.pitches[4] + segment.pitches[5]) * 85)},${Math.floor((segment.pitches[6] + segment.pitches[7] + segment.pitches[8]) * 85)},${segment.confidence})`
+            let rgba = `rgba(${Math.floor((segment.pitches[0] + segment.pitches[1] + segment.pitches[2] + segment.pitches[3]) * 63.75)},${Math.floor((segment.pitches[4] + segment.pitches[5] + segment.pitches[6] + segment.pitches[7]) * 63.75)},${Math.floor((segment.pitches[8] + segment.pitches[9] + segment.pitches[10] + segment.pitches[11]) * 63.75)},${segment.confidence})`
 
             let start = segment.start
             let duration = segment.duration
