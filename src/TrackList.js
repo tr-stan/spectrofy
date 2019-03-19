@@ -28,7 +28,7 @@ class TrackList extends Component {
                     id: id,
                     track: track
                 })
-                console.log("HEEEEEEEEEEEEEEYYYYYYY\n")
+                console.log("TRACK HAS BEEN ANALYZED\n")
                 return analysisJson
             } else {
             	console.log("OH NOOOOOOOOOOOOOOOOOO")
