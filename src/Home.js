@@ -30,15 +30,12 @@ class Home extends Component {
 	componentDidMount() {
         this.getUserInfo().then(data => console.log('UserInfo Data from API:', data))
     }
-	// authenticate = async () => {
-	// 	fetch(`http://localhost:8888/auth/spotify`)
-	// }
 
     render() {
         return (
             <div className="App">
             	<h1>spectrofy</h1>
-            	{this.state.userInfo !== null ? <Profile userInfo={this.state.userInfo} /> : <Login userInfo={this.state.userInfo} />}
+            	{this.state.userInfo === null ? <Login userInfo={this.state.userInfo} /> : <Profile userInfo={this.state.userInfo} />}
         	</div>
         )
     }
