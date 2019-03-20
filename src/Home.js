@@ -38,7 +38,7 @@ class Home extends Component {
         return (
             <div className="App">
             	<h1>spectrofy</h1>
-            	{this.state.userInfo !== null ? <Profile userInfo={this.state.userInfo} /> : <Login userInfo={this.state.userInfo} />}
+            	{(this.state.userInfo !== null && this.state.userInfo !== []) ? <Profile userInfo={this.state.userInfo} /> : <Login userInfo={this.state.userInfo} />}
         	</div>
         )
     }
