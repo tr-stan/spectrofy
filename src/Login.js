@@ -14,6 +14,7 @@ class Login extends Component {
 		return(
 			<div>
 			<a href="http://localhost:8888/auth/spotify">Login with Spotify</a>
+			<p className="note">(you may have to try twice)</p>
 			</div>
 		)
 	}

@@ -111,9 +111,9 @@ class Analysis extends Component {
 
     render() {
         return (
-            <div>
-				<h2>Visualization for {this.props.id}</h2>
-				<canvas width={window.innerWidth} height={window.innerHeight} ref={this.canvas}></canvas>
+            <div className="snap">
+				<h2>Visualization for {this.props.track}</h2>
+				<canvas className="snap" width={window.innerWidth} height={window.innerHeight} ref={this.canvas}></canvas>
 			</div>
         )
     }

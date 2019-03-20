@@ -50,7 +50,7 @@ class TrackList extends Component {
         	</li>
         )})
         return (
-        	(!!this.state.complete) ? <Analysis analysis={this.state.analysis} track={this.state.track} /> :  <ul>{listTracks}</ul>
+        	(!!this.state.complete) ? <Analysis analysis={this.state.analysis} track={this.state.track}/> :  <ul className="snap">{listTracks}</ul>
             )
 
     }
