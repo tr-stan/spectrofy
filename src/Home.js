@@ -10,7 +10,7 @@ class Home extends Component {
 
 	getUserInfo = async () => {
 		try {
-            const userInfo = await fetch('http://localhost:8888/user')
+            const userInfo = await fetch('https://audio-vision.herokuapp.com/user')
             console.log(userInfo.status)
       		if (userInfo.status !== 401) {
             const userInfoJson = await userInfo.json()
