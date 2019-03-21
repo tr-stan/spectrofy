@@ -31,7 +31,7 @@ class TrackList extends Component {
                 console.log("TRACK HAS BEEN ANALYZED\n")
                 return analysisJson
             } else {
-            	console.log("OH NOOOOOOOOOOOOOOOOOO")
+            	console.log("TRACK ANALYSIS ERROR")
                 this.setState({
                     analysis : null
                 })
