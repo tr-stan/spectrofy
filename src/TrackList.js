@@ -11,7 +11,7 @@ class TrackList extends Component {
 	}
 	getAudioAnalysis = async (index, id, track) => {
 		try {
-			const analysis = await fetch('http://localhost:8888/analyze', {
+			const analysis = await fetch('https://audio-vision.herokuapp.com/analyze', {
 				method: 'POST',
 				body: JSON.stringify({ id: id }),
                 headers: {
