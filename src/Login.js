@@ -13,7 +13,7 @@ class Login extends Component {
 	render() {
 		return(
 			<div>
-			<a href="https://audio-vision.herokuapp.com:8888/auth/spotify">Login with Spotify</a>
+			<a href="https://audio-vision.herokuapp.com/auth/spotify">Login with Spotify</a>
 			<p className="note">(you may have to try twice)</p>
 			</div>
 		)
