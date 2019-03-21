@@ -4,8 +4,7 @@ import TrackList from './TrackList'
 
 class Search extends Component {
 	state = {
-		track: '',
-		complete: false,
+		track: ''
 	}
 
 	handleChange = (event) => {
@@ -17,9 +16,6 @@ class Search extends Component {
 	handleSubmit = (event) => {
 		event.preventDefault()
 		this.props.getTrackData(this.state.track)
-		this.setState({
-			complete: false
-		})
 	}
 
 	render() {
@@ -32,7 +28,7 @@ class Search extends Component {
 					<input type="text" placeholder="Track Name" name="track" value={this.state.value} onChange={this.handleChange}/>
 					<button type="submit">Submit</button>
 				</form>
-				<TrackList trackData={this.props.trackData} complete={this.state.complete} />
+				<TrackList trackData={this.props.trackData}/>
 			</div>
 		)
 	}
