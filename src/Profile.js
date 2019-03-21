@@ -9,7 +9,7 @@ class Profile extends Component {
 
     getTrackData = async (track) => {
         try {
-            const trackData = await fetch('http://localhost:8888/search', {
+            const trackData = await fetch('https://audio-vision.herokuapp.com/search', {
                 method: 'POST',
                 body: JSON.stringify({ track: track }),
                 headers: {
