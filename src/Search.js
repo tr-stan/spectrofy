@@ -21,7 +21,6 @@ class Search extends Component {
 	}
 
 	analyzed = (event) => {
-		event.preventDefault()
 		this.setState({complete: true})
 	}
 
