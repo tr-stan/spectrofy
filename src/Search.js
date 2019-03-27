@@ -20,7 +20,8 @@ class Search extends Component {
 		this.props.getTrackData(this.state.track)
 	}
 
-	analyzed = () => {
+	analyzed = (event) => {
+		event.preventDefault()
 		this.setState({complete: true})
 	}
 
