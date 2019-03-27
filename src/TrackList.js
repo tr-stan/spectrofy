@@ -5,7 +5,6 @@ import Analysis from "./Analysis"
 class TrackList extends Component {
 	state = {
 		analysis: [],
-        complete: false,
         id: '',
         track: ''
 	}
@@ -24,10 +23,10 @@ class TrackList extends Component {
                 const analysisJson = await analysis.json()
                 this.setState({
                 	analysis: analysisJson,
-                    complete : true,
                     id: id,
                     track: track
                 })
+                this.props.analyzed()
                 console.log("TRACK HAS BEEN ANALYZED\n")
                 return analysisJson
             } else {
@@ -50,7 +49,7 @@ class TrackList extends Component {
         	</li>
         )})
         return (
-        	(!!this.state.complete) ? <Analysis analysis={this.state.analysis} track={this.state.track}/> :  <ul className="snap">{listTracks}</ul>
+        	(!!this.props.complete) ? <Analysis analysis={this.state.analysis} track={this.state.track}/> :  <ul className="snap">{listTracks}</ul>
             )
 
     }
