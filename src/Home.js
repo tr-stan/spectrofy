@@ -10,7 +10,10 @@ class Home extends Component {
 
 	getUserInfo = async () => {
 		try {
-            const userInfo = await fetch('https://audio-vision.herokuapp.com/user')
+            let params = new URLSearchParams(this.props.location.search)
+            let accessToken = params.get('access_token')
+            console.log("PARAMS ACCESSTOKEN: ", accessToken)
+            const userInfo = await fetch(`http://localhost:8888/user/${accessToken}`)
             console.log(userInfo.status)
       		if (userInfo.status !== 401) {
             const userInfoJson = await userInfo.json()
@@ -30,9 +33,6 @@ class Home extends Component {
 	componentDidMount() {
         this.getUserInfo().then(data => console.log('UserInfo Data from API:', data))
     }
-	// authenticate = async () => {
-	// 	fetch(`http://localhost:8888/auth/spotify`)
-	// }
 
     render() {
         return (
