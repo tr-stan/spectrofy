@@ -5,19 +5,22 @@ import Login from './Login'
 
 class Home extends Component {
 		state = {
-		userInfo: []
+		userInfo: [],
+    accessToken: ''
 	}
 
 	getUserInfo = async () => {
 		try {
             let params = new URLSearchParams(this.props.location.search)
             let accessToken = params.get('access_token')
-            console.log("PARAMS ACCESSTOKEN: ", accessToken)
             const userInfo = await fetch(`http://localhost:8888/user/${accessToken}`)
             console.log(userInfo.status)
       		if (userInfo.status !== 401) {
             const userInfoJson = await userInfo.json()
-            this.setState({ userInfo: userInfoJson })
+            this.setState({
+              userInfo: userInfoJson,
+              accessToken: accessToken
+            })
             return userInfoJson
       		} else {
       			this.setState({
@@ -38,7 +41,7 @@ class Home extends Component {
         return (
             <div className="App">
             	<h1>spectrofy</h1>
-            	{(this.state.userInfo !== null && this.state.userInfo !== []) ? <Profile userInfo={this.state.userInfo} /> : <Login userInfo={this.state.userInfo} />}
+            	{(this.state.userInfo !== null && this.state.userInfo !== []) ? <Profile userInfo={this.state.userInfo} accessToken={this.state.accessToken}/> : <Login userInfo={this.state.userInfo} />}
         	</div>
         )
     }

@@ -33,7 +33,7 @@ class Search extends Component {
 					<input type="text" placeholder="Track Name" name="track" value={this.state.value} onChange={this.handleChange}/>
 					<button type="submit">Submit</button>
 				</form>
-				<TrackList analyzed={this.analyzed} complete={this.state.complete} trackData={this.props.trackData}/>
+				<TrackList analyzed={this.analyzed} complete={this.state.complete} trackData={this.props.trackData} accessToken={this.props.accessToken}/>
 			</div>
 		)
 	}

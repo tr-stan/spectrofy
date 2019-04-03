@@ -9,7 +9,7 @@ class Profile extends Component {
 
     getTrackData = async (track) => {
         try {
-            const trackData = await fetch('https://audio-vision.herokuapp.com/search', {
+            const trackData = await fetch(`http://localhost:8888/search/${this.props.accessToken}`, {
                 method: 'POST',
                 body: JSON.stringify({ track: track }),
                 headers: {
@@ -37,7 +37,7 @@ class Profile extends Component {
     render() {
         return (
             <div>
-				<Search getTrackData={this.getTrackData} trackData={this.state.trackData}/>
+				<Search getTrackData={this.getTrackData} trackData={this.state.trackData} accessToken={this.props.accessToken}/>
 				<p id="logged">Logged in as {this.props.userInfo.display_name}</p>
 			</div>
         )
