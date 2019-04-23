@@ -13,7 +13,7 @@ class Home extends Component {
 		try {
             let params = new URLSearchParams(this.props.location.search)
             let accessToken = params.get('access_token')
-            const userInfo = await fetch(`https://audio-vision.herokuapp.com/user/${accessToken}`)
+            const userInfo = await fetch(`http://localhost:8888/user/${accessToken}`)
             console.log(userInfo.status)
       		if (userInfo.status !== 401) {
             const userInfoJson = await userInfo.json()

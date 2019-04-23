@@ -1,68 +1,35 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Spectrofy
 
-## Available Scripts
+The purpose of this app is to allow users to search for tracks via Spotify and see a whimisical vizualization of various data (timbre, pitch, loudness, etc.) for a chosen track.
 
-In the project directory, you can run:
+## To see the app live, please go to [https://spectrofy.herokuapp.com](https://spectrofy.herokuapp.com)
 
-### `npm start`
+## To see code for the app's backend/server, please [go to my github repository for the backend](https://github.com/tri-be/audio-vision), named audio-vision.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## What does the app do?
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Spectrofy allows you to search for tracks by artist or track name, and then see a visualization of that track's audio analysis data. Currently, the visualization is in the form of bubbles that float around endlessly.
 
-### `npm test`
+### At first they might seem to have no meaning, but hopefully this can clarify what is going on until I can further refactor the application:
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Each bubble in a track's visualization represents a 0.2 - 1 second-long segment of the track provided by Spotify's 'track audio analysis' API endpoint.
+- Each bubble's diameter/size is determined by the maximum loudness of that specific segment.
+- Each bubble's color is determined by it's pitch data. I converted the pitch data for the segment into an RGBA value, with the opacity determined by the data confidence for that specific segment of data.
+- Lastly, I really wanted to incorporate the timbre data and some randomness into the visualization. So, I took a random data point from each segment's array of timbre data and used it to determine the bubble's starting location and velocity.
 
-### `npm run build`
+## Overview of the development process: my failures, discoveries, victories, and plans for refactoring
+(I hope to update this README with better documentation shortly, and transfer this information to a Medium article.)
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> **tl;dr** I am so proud of this project, and happy that I stuck with it through to deployment. There are many aspects of the program that I would do differently and plan on incorporating into a refactorization of the code. Mainly, I would actually like to reduce my use of node modules for interacting with Spotify's web API, because although they did a lot of heavy lifting, they also left so many details out and limited the ways I could more transparently and effectively interact with Spotify's endpoints.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+When I wanted to build this app for my capstone project at General Assembly, I was advised not to because of the complexity of working with Spotify's Web API and with authentication. However building an app like this has been a dream for me for quite some time, and I believed I was ready to tackle the challenge. The authentication portion and successfully getting data from by requests to Spotify's Web API turned out to be quite a challenge,
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**The authentication via Spotify's Web API did turn out to be quite a challenge**,since I had never worked with oAuth2 or any authentication before this project, and I learned so much about the back and forth between my user, my app as the client, and Spotify as the resource.
 
-### `npm run eject`
+**Originally I used the [passport-spotify](http://www.passportjs.org/packages/passport-spotify/) Node module to handle the authentication**, but I ran into an issue with storing the accessToken to my MongoDB collection.
+This was partially due to my noviceness with how the authentication code flow works, and also due to the fact that Passport was handling a lot of complex logic behind the scenes that I could not find any good explanation of.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**So then I tried using the [spotify-web-api-node](https://github.com/thelinmichael/spotify-web-api-node) Node module to handle authentication, however this also lead me to some new problems.**
+Somehow, when I logged in to Spectrofy with my Spotify account, I was setting the access token globally, and anyone who went to the domain would be already logged in under my account!
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+The more I read, I finally realized that the built-in method I was using from spotify-web-api-node was setting the access token globally for the program, so I would have to find a way to set the access token with each request to Spotify's web API. I searched through Spotify's developer site and came across some other projects made by Spotify's developers that utilized the 
