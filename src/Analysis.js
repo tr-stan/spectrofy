@@ -15,9 +15,9 @@ class Analysis extends Component {
         let cHeight = this.canvas.current.height
         let c = this.canvas.current.getContext('2d')
         
-        // create Circle class for instantiating circles based off
+        // create Bubble class for instantiating bubbles based off
         // the track audio analysis's segments data
-        class Circle {
+        class Bubble {
             constructor(x, y, dx, dy, radius, start, duration, rgba) {
                 this.x = x;
                 this.y = y;
@@ -29,7 +29,7 @@ class Analysis extends Component {
                 this.rgba = rgba;
             }
 
-            // method for drawing each instantiated circle
+            // method for drawing each instantiated bubble
             draw() {
                 c.beginPath()
                 c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
@@ -39,20 +39,20 @@ class Analysis extends Component {
                 c.fill()
             }
 
-            // method for how the animated circle will update/move
+            // method for how the animated bubble will update/move
             update() {
 
-            	// prevent circle from getting stuck on/going past sides of page
+            	// prevent bubble from getting stuck on/going past sides of page
                 if (this.x + this.radius > cWidth || this.x - this.radius < 0) {
                     this.dx = -this.dx;
                 }
 
-                // prevent circle from getting stuck on/going past top/bottom of page
+                // prevent bubble from getting stuck on/going past top/bottom of page
                 if (this.y + this.radius > cHeight || this.y - this.radius < 0) {
                     this.dy = -this.dy
                 }
 
-                // move circle at its set velocity
+                // move bubble at its set velocity
                 this.x += this.dx
                 this.y += this.dy
 
@@ -60,7 +60,7 @@ class Analysis extends Component {
             }
         }
 
-        let circleArray = []
+        let bubbleArray = []
 
         // get random number between two values
         function getRandomArbitrary(min, max) {
@@ -68,7 +68,7 @@ class Analysis extends Component {
         }
 
         // map through fetched audio analysis' segments
-        circleArray = this.props.analysis.map(segment => {
+        bubbleArray = this.props.analysis.map(segment => {
         	let radius = Math.abs(Math.round((segment.loudness_max * segment.confidence) / 3))
 
         	let randomTimbre = Math.floor(Math.random() * 11)
@@ -87,16 +87,16 @@ class Analysis extends Component {
             let start = segment.start
             let duration = segment.duration
 
-        	return (new Circle(x, y, dx, dy, radius, start, duration, rgba))
+        	return (new Bubble(x, y, dx, dy, radius, start, duration, rgba))
         })
-        // for (let i = 0; i < circleArray.length; i++) {
-        // 	console.log(`Circle No. ${i + 1} X variable:`, circleArray[i].x)
+        // for (let i = 0; i < bubbleArray.length; i++) {
+        // 	console.log(`Bubble No. ${i + 1} X variable:`, bubbleArray[i].x)
         // }
 
         function animate() {
             requestAnimationFrame(animate)
-            c.clearRect(0, 0, cWidth, cHeight)
-            circleArray.map(circle => circle.update())
+            // c.clearRect(0, 0, cWidth, cHeight)
+            bubbleArray.map(bubble => bubble.update(bubble.start, bubble.duration))
         }
 
         animate()
