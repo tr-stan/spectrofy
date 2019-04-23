@@ -96,10 +96,7 @@ class Analysis extends Component {
         function animate() {
             requestAnimationFrame(animate)
             c.clearRect(0, 0, cWidth, cHeight)
-
-            for (let i = 0; i < circleArray.length; i++) {
-                circleArray[i].update()
-            }
+            circleArray.map(circle => circle.update())
         }
 
         animate()
