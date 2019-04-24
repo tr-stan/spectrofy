@@ -1,8 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Libre+Barcode+128+Text|Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Libre+Barcode+128+Text|Roboto+Mono');
 
 body {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 20px;
+  margin: 0;
+  background-color: rgba(50, 50, 50, 1);
+  font-family: 'Roboto Mono', sans-serif;
+  font-size: 1.4rem;
+  color: rgba(250, 250, 250, 0.666);
   scroll-snap-type: y proximity;
 }
 
@@ -10,6 +13,11 @@ h1 {
   font-family: 'Libre Barcode 128 Text', sans-serif;
   font-size: 5em;
   margin-bottom: 10px;
+}
+
+h2 {
+  margin: 2vh auto;
+  font-size: 2rem;
 }
 
 p {
@@ -22,8 +30,7 @@ ul {
   list-style-type: none;
   margin: 10px auto;
   padding: 10px;
-  text-align: left;
-  margin-left: 20vw;
+  text-align: center;
 }
 
 li {
@@ -32,7 +39,8 @@ li {
 
 a {
   text-decoration: none;
-  color: #456;
+  text-align: center;
+  color: rgba(250, 250, 250, 0.666);
   font-weight: bold;
   font-size: 1em;
   margin: 10px;
@@ -44,7 +52,7 @@ a:hover {
 button {
   padding: 10px;
   border-radius: 5px;
-  background: #eee;
+  background-color: rgba(250, 250, 250, 0.666);
   border: none;
 }
 
@@ -54,7 +62,9 @@ button:hover {
 
 input {
   height: 1em;
-  padding: 5px;
+  background-color: rgba(250, 250, 250, 0.666);
+  border: none;
+  padding: 10px;
   margin: 20px 5px 20px 5px;
 }
 
@@ -63,10 +73,10 @@ div {
 }
 
 canvas {
-  background: #56789a;
-  width: 100%;
-  height: 100%;
-  scroll-snap-align: start;
+  background: rgba(200, 200, 200, 0.05);
+  box-shadow: 0 0 5px rgb(40, 40, 40);
+  width: 85vw;
+  height: 85vh;
 }
 
 .App {
@@ -92,6 +102,20 @@ canvas {
 
 .snap {
   scroll-snap-align: start;
+}
+
+#login {
+  margin: 50px auto;
+  text-align: center;
+  max-width: 100vw;
+}
+
+#login a {
+  background-color: rgba(30,215,96, 0.8);
+  padding: 20px 30px;
+  font-size: 1rem;
+  border-radius: 50px;
+  margin: 0 auto;
 }
 
 #logged {
