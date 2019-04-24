@@ -30,10 +30,10 @@ class Analysis extends Component {
             let randomTimbre = Math.floor(Math.random() * 11)
 
             let randomX = Math.abs(segment.timbre[randomTimbre] * 2)
-            let x = getRandomArbitrary(randomX, cWidth)
+            let x = getRandomArbitrary(randomX, cWidth - radius)
 
             let randomY = Math.abs(segment.timbre[randomTimbre] * 2)
-            let y = getRandomArbitrary(randomY, cHeight)
+            let y = getRandomArbitrary(randomY, cHeight - radius)
 
             let dx = (Math.random() - 0.5) * 3
             let dy = (Math.random() - 0.5) * 3
@@ -49,14 +49,14 @@ class Analysis extends Component {
         //  console.log(`Bubble No. ${i + 1} X variable:`, bubbleArray[i].x)
         // }
 
-        function animate() {
+        let animate = () => {
             let start = Date.now()
             
             c.clearRect(0, 0, cWidth, cHeight)
             bubbleArray.map(bubble => bubble.update())
             requestAnimationFrame(animate)
         }
-
+        
         animate()
     }
 
@@ -66,9 +66,9 @@ class Analysis extends Component {
 
     render() {
         return (
-            <div className="snap">
-                <h2>Visualization for {this.props.track}</h2>
-                <canvas className="snap" width={window.innerWidth} height={window.innerHeight} ref={this.canvas}></canvas>
+            <div>
+                <h2>{this.props.track}</h2>
+                <canvas width={window.innerWidth} height={window.innerHeight} ref={this.canvas}></canvas>
             </div>
         )
     }
