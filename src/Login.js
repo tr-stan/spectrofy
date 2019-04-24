@@ -8,8 +8,8 @@ class Login extends Component {
 
 	render() {
 		return(
-			<div>
-			<a href="http://localhost:8888/auth/spotify">Login with Spotify</a>
+			<div id="login">
+			<a href="http://localhost:8888/auth/spotify">LOGIN WITH SPOTIFY</a>
 			</div>
 		)
 	}

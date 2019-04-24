@@ -19,8 +19,8 @@ class Bubble {
     draw() {
         this.c.beginPath()
         this.c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
-        this.c.strokeStyle = this.rgba
-        this.c.stroke()
+        // this.c.strokeStyle = this.rgba
+        // this.c.stroke()
         this.c.fillStyle = this.rgba
         this.c.fill()
     }

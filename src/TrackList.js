@@ -19,7 +19,7 @@ class TrackList extends Component {
                 }
 			})
 			if (analysis.status !== 401) {
-                console.log("AUDIO ANALYSIS DATAAAAAAAAAAA\n", analysis)
+                // console.log("AUDIO ANALYSIS DATAAAAAAAAAAA\n", analysis)
                 const analysisJson = await analysis.json()
                 this.setState({
                 	analysis: analysisJson,
@@ -49,7 +49,7 @@ class TrackList extends Component {
         	</li>
         )})
         return (
-        	(!!this.props.complete) ? <Analysis analysis={this.state.analysis} track={this.state.track}/> :  <ul className="snap">{listTracks}</ul>
+        	(!!this.props.complete) ? <Analysis analysis={this.state.analysis} track={this.state.track}/> :  <ul>{listTracks}</ul>
             )
 
     }
