@@ -10,7 +10,7 @@ class TrackList extends Component {
 	}
 	getAudioAnalysis = async (index, id, track) => {
 		try {
-			const analysis = await fetch(`http://audio-vision.herokuapp.com/analyze/${this.props.accessToken}`, {
+			const analysis = await fetch(`https://audio-vision.herokuapp.com/analyze/${this.props.accessToken}`, {
 				method: 'POST',
 				body: JSON.stringify({ id: id }),
                 headers: {
