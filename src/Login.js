@@ -7,9 +7,10 @@ class Login extends Component {
 	}
 
 	render() {
+		let redirectURL = (process.env.NODE_ENV !== 'production') ? 'http://localhost:8888' : 'https://audio-vision.herokuapp.com'
 		return(
 			<div id="login">
-			<a href="https://audio-vision.herokuapp.com/auth/spotify">LOGIN WITH SPOTIFY</a>
+			<a href={`${redirectURL}/auth/spotify`}>LOGIN WITH SPOTIFY</a>
 			</div>
 		)
 	}

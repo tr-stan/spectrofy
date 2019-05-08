@@ -8,8 +8,9 @@ class Profile extends Component {
     }
 
     getTrackData = async (track) => {
+        let fetchURL = (process.env.NODE_ENV !== 'production') ? 'http://localhost:8888' : 'https://audio-vision.herokuapp.com'
         try {
-            const trackData = await fetch(`https://audio-vision.herokuapp.com/search/${this.props.accessToken}`, {
+            const trackData = await fetch(`${fetchURL}/search/${this.props.accessToken}`, {
                 method: 'POST',
                 body: JSON.stringify({ track: track }),
                 headers: {

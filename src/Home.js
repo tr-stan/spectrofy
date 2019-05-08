@@ -10,10 +10,11 @@ class Home extends Component {
     }
 
     getUserInfo = async () => {
+        let fetchURL = (process.env.NODE_ENV !== 'production') ? 'http://localhost:8888' : 'https://audio-vision.herokuapp.com'
         try {
             let params = new URLSearchParams(this.props.location.search)
             let accessToken = params.get('access_token')
-            const userInfo = await fetch(`https://audio-vision.herokuapp.com/user/${accessToken}`)
+            const userInfo = await fetch(`${fetchURL}/user/${accessToken}`)
             console.log(userInfo.status)
             if (userInfo.status !== 401) {
                 const userInfoJson = await userInfo.json()
@@ -35,7 +36,7 @@ class Home extends Component {
 
     componentDidMount() {
         this.getUserInfo()
-            // .then(data => console.log('UserInfo Data from API:', data))
+        // .then(data => console.log('UserInfo Data from API:', data))
     }
 
     render() {

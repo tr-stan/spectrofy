@@ -27,7 +27,7 @@ class Search extends Component {
 	render() {
 		return(
 			<div>
-				<p>Spectrofy visualizes track data from Spotify's Web API via its <a href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-analysis/">track audio analysis</a> endpoint.</p>
+				<p>Spectrofy visualizes track data from Spotify's Web API via its <a href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-analysis/" target="_blank" rel="noopener noreferrer">track audio analysis</a> endpoint.</p>
 				<p>Search for a song to see it visualized.</p>
 				<form onSubmit={this.handleSubmit}>
 					<input type="text" placeholder="Track Name" name="track" value={this.state.value} onChange={this.handleChange}/>
