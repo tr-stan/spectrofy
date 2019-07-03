@@ -9,7 +9,7 @@ class TrackList extends Component {
         track: ''
 	}
 	getAudioAnalysis = async (index, id, track) => {
-        let fetchURL = (process.env.NODE_ENV !== 'production') ? 'http://localhost:8888' : 'https://spectrofy.netlify.com'
+        let fetchURL = (process.env.NODE_ENV !== 'production') ? 'http://localhost:8888' : 'https://audio-vision.herokuapp.com'
 		try {
 			const analysis = await fetch(`${fetchURL}/analyze/${this.props.accessToken}`, {
 				method: 'POST',

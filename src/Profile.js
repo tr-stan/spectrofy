@@ -8,7 +8,7 @@ class Profile extends Component {
     }
 
     getTrackData = async (track) => {
-        let fetchURL = (process.env.NODE_ENV !== 'production') ? 'http://localhost:8888' : 'https://spectrofy.netlify.com'
+        let fetchURL = (process.env.NODE_ENV !== 'production') ? 'http://localhost:8888' : 'https://audio-vision.herokuapp.com'
         try {
             const trackData = await fetch(`${fetchURL}/search/${this.props.accessToken}`, {
                 method: 'POST',
