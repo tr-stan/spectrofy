@@ -10,7 +10,7 @@ class Home extends Component {
     }
 
     getUserInfo = async () => {
-        let fetchURL = (process.env.NODE_ENV !== 'production') ? 'http://localhost:8888' : 'https://audio-vision.herokuapp.com'
+        let fetchURL = (process.env.NODE_ENV !== 'production') ? 'http://localhost:8888' : 'https://spectrofy.netlify.com'
         try {
             let params = new URLSearchParams(this.props.location.search)
             let accessToken = params.get('access_token')

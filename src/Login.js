@@ -7,7 +7,7 @@ class Login extends Component {
 	}
 
 	render() {
-		let redirectURL = (process.env.NODE_ENV !== 'production') ? 'http://localhost:8888' : 'https://audio-vision.herokuapp.com'
+		let redirectURL = (process.env.NODE_ENV !== 'production') ? 'http://localhost:8888' : 'https://spectrofy.netlify.com'
 		return(
 			<div id="login">
 			<a href={`${redirectURL}/auth/spotify`}>LOGIN WITH SPOTIFY</a>
