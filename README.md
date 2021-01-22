@@ -2,7 +2,7 @@
 
 The purpose of this app is to allow users to search for tracks via Spotify and see a whimisical vizualization of various data (timbre, pitch, loudness, etc.) for a chosen track.
 
-## To see the app live, please go to [https://spectrofy.netlify.com](https://spectrofy.netlify.com)
+## To see the app live, please go to [https://spectrofy.netlify.app](https://spectrofy.netlify.app)
 
 ## To see code for the app's backend/server, please [go to my github repository for the backend](https://github.com/tri-be/audio-vision), named audio-vision.
 
@@ -32,4 +32,4 @@ This was partially due to my noviceness with how the authentication code flow wo
 **So then I tried using the [spotify-web-api-node](https://github.com/thelinmichael/spotify-web-api-node) Node module to handle authentication, however this also lead me to some new problems.**
 Somehow, when I logged in to Spectrofy with my Spotify account, I was setting the access token globally, and anyone who went to the domain would already be logged in under my account!
 
-The more I read, I finally realized that the built-in method I was using from spotify-web-api-node was setting the access token globally for the program, so I would have to find a way to set the access token with each request to Spotify's web API. I searched through Spotify's developer site and came across some other projects made by Spotify's developers that utilized the 
+The more I read, I finally realized that the built-in method I was using from spotify-web-api-node was setting the access token globally for the program, so I would have to find a way to set the access token with each request to Spotify's web API. I searched through Spotify's developer site and came across some other projects made by Spotify's developers that utilized the

@@ -50,13 +50,13 @@ class Analysis extends Component {
         // }
 
         let animate = () => {
-            let start = Date.now()
-            
+            // let start = Date.now()
+
             c.clearRect(0, 0, cWidth, cHeight)
             bubbleArray.map(bubble => bubble.update())
             requestAnimationFrame(animate)
         }
-        
+
         animate()
     }
 
